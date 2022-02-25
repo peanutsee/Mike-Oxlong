@@ -6,4 +6,6 @@ Handles all URL paths related to projects.
 """
 
 urlpatterns = [
+    path("retrieve-projects/", views.retrieveAllProjects),
+    path("retrieve-project/<int:id>/", views.retrieveProject)
 ]

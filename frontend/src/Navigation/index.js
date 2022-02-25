@@ -2,13 +2,16 @@ import { lazy } from "react";
 
 const LandingPage = lazy(() => import("../Components/LandingPage"));
 
-const NAVIGATION_ROUTES = Object.freeze({
+export const NAVIGATION_ROUTES = Object.freeze({
+  // Everyone Can Access Routes
   home: {
     path: "/",
     exact: true,
     element: <LandingPage />,
   },
+
+  // Employer-Only Routes
+
+  // Interns-Only Routes
 });
 
-
-export default NAVIGATION_ROUTES;
