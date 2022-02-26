@@ -1,0 +1,17 @@
+.ProgressSteps__paddings {
+    margin-top: 0px;
+}
+
+.ProgressSteps__leftColumn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.ProgressSteps__heading {
+    text-align: center;
+}
+
+.ProgressSteps__Table {
+    margin-top: 50px;
+}
