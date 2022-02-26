@@ -14,6 +14,10 @@ const EmployerDashboard = lazy(() =>
   import("../Components/EmployerUI/Components/EmployerDashboard")
 );
 
+const EmployerLogin = lazy(() =>
+  import("../Components/EmployerUI/Components/AuthLogin")
+);
+
 export const NAVIGATION_ROUTES = Object.freeze({
   // Everyone Can Access Routes
   home: {
@@ -36,6 +40,11 @@ export const NAVIGATION_ROUTES = Object.freeze({
   employerDashboard: {
     path: "/employer-dash",
     element: <EmployerDashboard />,
+  },
+
+  employerLogin: {
+    path: "/employer-login",
+    element: <EmployerLogin />,
   },
 
   // Interns-Only Routes
