@@ -6,6 +6,8 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import FileUpload from "../../../../../Commons/Components/FileUpload/index";
 
+import Multiselect from "multiselect-react-dropdown";
+
 import "./RegistrationForm.css";
 
 function InternRegistrationForm() {
@@ -16,9 +18,27 @@ function InternRegistrationForm() {
   const [lastName, setLastName] = useState("");
   const [hpNumber, setHPNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [selectedInterests, setSelectedInterests] = useState([]);
   const [education, setEducation] = useState("");
   const [password, setPassword] = useState("");
   const [resume, setResume] = useState(null);
+
+  const onSelectSkills = (selectedList, selectedItem) => {
+    setSelectedSkills(selectedList);
+  };
+
+  const onRemoveSkills = (selectedList, selectedItem) => {
+    setSelectedSkills(selectedList);
+  };
+
+  const onSelectInterests = (selectedList, selectedItem) => {
+    setSelectedInterests(selectedList);
+  };
+
+  const onRemoveInterests = (selectedList, selectedItem) => {
+    setSelectedInterests(selectedList);
+  };
 
   const handleRegistration = () => {
     let data = {
@@ -28,19 +48,19 @@ function InternRegistrationForm() {
       lastName: lastName,
       hpNumber: hpNumber,
       email: email,
+      skills: selectedSkills,
+      interests: selectedInterests,
       education: education,
       password: password,
       resume: resume,
     };
+
+    console.log(data.skills);
     dispatch(handleInternRegistration(data));
   };
 
   const handleEducationLevel = (e) => {
     setEducation(e.target.value);
-  };
-
-  const nextBtn = () => {
-    console.log(resume.name);
   };
 
   return (
@@ -168,13 +188,45 @@ function InternRegistrationForm() {
             </Container>
           </Row>
           <hr className="my-5"></hr>
+          <div className="fw-bold mb-3">Skills & Interests</div>
+          <Row className="mb-3">
+            <Multiselect
+              isObject={false}
+              placeholder={"Skills"}
+              showArrow={true}
+              options={[
+                "Software Engineering",
+                "Frontend Developer",
+                "Backend Developer",
+                "DevOps",
+                "Cloud Computing",
+              ]}
+              onSelect={onSelectSkills}
+              onRemove={onRemoveSkills}
+            ></Multiselect>
+          </Row>
+          <Row className="mb-3">
+            <Multiselect
+              isObject={false}
+              placeholder={"Interests"}
+              showArrow={true}
+              options={[
+                "Software Development",
+                "Product Manager",
+                "Business Analyst",
+                "Data Analyst",
+              ]}
+              onSelect={onSelectInterests}
+              onRemove={onRemoveInterests}
+            ></Multiselect>
+          </Row>
           <div className="fw-bold mb-3">Resume</div>
           <Row className="mb-5">
             <FileUpload uploadFile={setResume}></FileUpload>
           </Row>
           <Row className="d-flex justify-content-center">
             <Col md="auto">
-              <Button id="next-btn" onClick={nextBtn}>
+              <Button id="next-btn" onClick={handleRegistration}>
                 NEXT
               </Button>
             </Col>

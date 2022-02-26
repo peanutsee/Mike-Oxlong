@@ -57,6 +57,7 @@ def registerUser(request):
                     user=user,
                     skills=data['skills'],
                     interests=data['interests'],
+                    education=data['education'],
                     resume=data['resume']
                 )
 

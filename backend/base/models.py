@@ -5,9 +5,9 @@ class InternProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     interests = models.TextField()
     skills = models.TextField()
+    education = models.TextField(default="Kindergarten")
     resume = models.FileField(upload_to='resumes/')
-    is_intern = models.BooleanField(default=True
-                                    )
+    is_intern = models.BooleanField(default=True)
     objects = models.manager
 
     def __str__(self):
