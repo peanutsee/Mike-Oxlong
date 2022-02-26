@@ -31,7 +31,7 @@ function CreateInternshipForm() {
       internship_description: description,
       internship_compensation: compensation,
       internship_location: location,
-      internship_hards_kills: hardskills,
+      internship_hard_skills: hardskills,
       internship_soft_skills: softskills,
       internship_learning_outcome: learningOutcomes,
       internship_industry: industry,

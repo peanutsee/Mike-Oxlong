@@ -15,7 +15,7 @@ function EmployerDashboard() {
   const { employerInfo } = employerLogin;
 
   useEffect(() => {
-    if (!employerInfo) {
+    if (employerInfo.length === 0) {
       navigate("/employer-portal");
     }
   }, [navigate, employerInfo]);
