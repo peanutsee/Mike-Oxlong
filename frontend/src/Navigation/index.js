@@ -24,11 +24,11 @@ export const NAVIGATION_ROUTES = Object.freeze({
   employerRegistration: {
     path: '/employer-register',
     element: <EmployerRegistration/>
-  }
+  },
 
   // Interns-Only Routes
   internRegistration: {
-    path: "/intern/register",
+    path: "/intern-register",
     element: <InternRegistration />,
   },
 });
