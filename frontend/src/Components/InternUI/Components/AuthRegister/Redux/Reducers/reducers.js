@@ -5,7 +5,7 @@ import {
   INTERN_REGISTER_RESET,
 } from "../Constants/constants";
 
-const internRegisterInitialState = { data: [] };
+const internRegisterInitialState = { internInfo: [] };
 
 export const internRegistrationReducer = (
   state = internRegisterInitialState,
@@ -20,7 +20,7 @@ export const internRegistrationReducer = (
         ...internRegisterInitialState,
         loading: false,
         success: true,
-        data: payload,
+        internInfo: payload,
       };
     case INTERN_REGISTER_ERROR:
       return {
@@ -30,7 +30,7 @@ export const internRegistrationReducer = (
         error: payload,
       };
     case INTERN_REGISTER_RESET:
-      return { data: [] };
+      return { internInfo: [] };
     default:
       return state;
   }

@@ -9,10 +9,6 @@ function InternLoginForm() {
   const navigate = useNavigate();
 
   const internLogin = useSelector((state) => state.internLoginReducer);
-
-  if (true) {
-    console.log(internLogin);
-  }
   const { internInfo } = internLogin;
 
   // Form States
@@ -30,8 +26,7 @@ function InternLoginForm() {
 
   useEffect(() => {
     if (internInfo.length !== 0) {
-      console.log("dash");
-      //navigate("/intern-dash");
+      navigate("/intern-dash");
     }
   }, [navigate, internInfo]);
 

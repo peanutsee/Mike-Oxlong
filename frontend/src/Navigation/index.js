@@ -36,6 +36,19 @@ const InternLogin = lazy(() =>
   import("../Components/InternUI/Components/AuthLogin")
 );
 
+const InternDashboard = lazy(() =>
+  import("../Components/InternUI/Components/InternDashboard")
+);
+const Courses = lazy(() => import("../Components/InternUI/Components/Courses"));
+
+const Internships = lazy(() =>
+  import("../Components/InternUI/Components/Internships")
+);
+
+const Projects = lazy(() =>
+  import("../Components/InternUI/Components/Projects")
+);
+
 export const NAVIGATION_ROUTES = Object.freeze({
   // Everyone Can Access Routes
   home: {
@@ -89,5 +102,25 @@ export const NAVIGATION_ROUTES = Object.freeze({
   internLogin: {
     path: "/intern-login",
     element: <InternLogin />,
+  },
+
+  internDashboard: {
+    path: "/intern-dashboard",
+    element: <InternDashboard />,
+  },
+
+  internCourses: {
+    path: "/upskill",
+    element: <Courses />,
+  },
+
+  internInternships: {
+    path: "/internships",
+    element: <Internships />,
+  },
+
+  internProjects: {
+    path: "/projects",
+    element: <Projects />,
   },
 });
