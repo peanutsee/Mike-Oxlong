@@ -1,5 +1,5 @@
 import React from "react";
-import ProgressSteps from "./Components/ProgressSteps/ProgressSteps.js";
+import ProgressSteps from '../../Commons/Components/ProgressSteps/ProgressSteps'
 
 function index() {
   return (
