@@ -14,13 +14,6 @@ function FileUpload({ uploadFile }) {
     uploadFile(fileChosen.current.files[0]);
   }
 
-  // const selectNewFile = () => {
-  //   console.log(fileName);
-  //   setFileName(fileChosen.current.files[0].name);
-  //   console.log(fileChosen.current.files[0].name);
-  //   console.log(typeof "HEllo");
-  // };
-
   return (
     <div>
       <Container className="border py-4 mb-3">
