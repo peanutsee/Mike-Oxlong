@@ -8,7 +8,7 @@ function RecommendedCourses() {
 
   return <div className='p-5 my-5'>
       <h2>Because you are interested in....</h2>
-      <p>{internInfo.interests}</p>
+      <p>{internInfo.interests.substring(2,internInfo.interests.length-2).split("', '").map(skill => <li>{skill}</li>)}</p>
       <h5>Try these courses!</h5>
   </div>;
 }
