@@ -1,11 +1,12 @@
 import React from "react";
-import ProgressSteps from "./Components/ProgressSteps/ProgressSteps.js";
+import Gateway from "./Components/Gateway";
+import CarouselSection from "./Components/CarouselSection";
 
 function index() {
   return (
     <div>
-      Landing Page
-      <ProgressSteps />
+      <CarouselSection />
+      <Gateway />
     </div>
   );
 }
