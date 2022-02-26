@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getInternships } from "../Redux/Actions/actions";
 import { useNavigate } from "react-router-dom";
 import InternshipCard from "./InternshipCard";
-import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function InternshipsList() {
