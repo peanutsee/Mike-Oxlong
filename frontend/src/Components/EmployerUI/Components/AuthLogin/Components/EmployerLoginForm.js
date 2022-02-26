@@ -15,7 +15,8 @@ function EmployerLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
     let data = {
       username: email,
       password: password,
@@ -24,7 +25,7 @@ function EmployerLoginForm() {
   };
 
   useEffect(() => {
-    if (employerInfo) {
+    if (employerInfo.length !== 0) {
       navigate('/employer-dash');
     }
   }, [navigate, employerInfo]);

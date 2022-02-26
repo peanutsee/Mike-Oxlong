@@ -21,6 +21,7 @@ function AppHeader() {
 
   const handleEmployerLogout = () => {
     dispatch(employerLogout());
+    window.location.reload(true);
   };
 
   return (
@@ -47,7 +48,7 @@ function AppHeader() {
                   <>
                     <ListGroup className="shadow shadow-100">
                       <ListGroup.Item>
-                        <Link to="/employer-ui">
+                        <Link to="/employer-dash">
                           <Nav.Item>Dashboard</Nav.Item>
                         </Link>
                       </ListGroup.Item>
@@ -63,13 +64,9 @@ function AppHeader() {
                         </Link>
                       </ListGroup.Item>
                     </ListGroup>
-                    <Button
-                      onClick={handleEmployerLogout}
-                      type="submit"
-                      className="btn btn-secondary my-5"
-                    >
-                      Logout
-                    </Button>
+                      <Button className="mt-5" onClick={handleEmployerLogout}>
+                        Logout
+                      </Button>
                   </>
                 ) : (
                   <>
@@ -87,7 +84,6 @@ function AppHeader() {
                     </ListGroup>
                   </>
                 )}
-
 
                 {/* 
                 {internData && (
