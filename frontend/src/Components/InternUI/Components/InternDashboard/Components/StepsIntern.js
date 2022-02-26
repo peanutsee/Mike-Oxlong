@@ -5,14 +5,18 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 
 const steps = ["View Resume", "Schedule Meeting", "Outcome"];
 
 export default function StepsIntern(props) {
   const { internships } = props;
-  console.log(internships)
+  console.log(internships);
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
+
+  const internLogin = useSelector((state) => state.internLoginReducer);
+  const { internInfo } = internLogin;
 
   const totalSteps = () => {
     return steps.length;
@@ -26,14 +30,22 @@ export default function StepsIntern(props) {
     return completedSteps() === totalSteps();
   };
 
+  const parseStringArray = (stringArray) => {
+    stringArray = stringArray.replace("[", "");
+    stringArray = stringArray.replace("]", "");
+    stringArray = stringArray.replace(/'/g, "");
+    return stringArray.split(",");
+  };
+
+  console.log(parseStringArray(internInfo.skills));
+
   return (
     <>
       {internships.map((internship) =>
         internship.enrolled_intern.map((intern) => (
           <>
-            <h4>
-              {internship.internship_title} Position
-            </h4>
+            {console.log(intern)}
+            <h4>{internship.internship_title} Position</h4>
             <Box sx={{ width: "100%" }}>
               <Stepper nonLinear activeStep={activeStep}>
                 {steps.map((label, index) => (
@@ -48,7 +60,7 @@ export default function StepsIntern(props) {
                 {allStepsCompleted() ? (
                   <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
-                        Internship Case Closed!
+                      Internship Case Closed!
                     </Typography>
                     <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                       <Box sx={{ flex: "1 1 auto" }} />
@@ -59,15 +71,29 @@ export default function StepsIntern(props) {
                     <Typography sx={{ mt: 2, mb: 1 }}>
                       {activeStep + 1 === 1 ? (
                         <>
-                          <p>First Name: {intern.first_name}</p>
-                          <p>Last Name: {intern.last_name}</p>
-                          <p>Interests: {intern.interests}</p>
-                          <p>Education: {intern.education}</p>
-                          <p>Skills: {intern.skills}</p>
+                          <p>First Name: {internInfo.first_name}</p>
+                          <p>Last Name: {internInfo.last_name}</p>
+                          <p>
+                            Interests:{" "}
+                            {parseStringArray(internInfo.interests).map(
+                              (interest) => (
+                                <span>| {interest} |</span>
+                              )
+                            )}
+                          </p>
+                          <p>Education: {internInfo.education}</p>
+                          <p>
+                            Skills:{" "}
+                            {parseStringArray(internInfo.skills).map(
+                              (skill) => {
+                                return <span> | {skill} | </span>;
+                              }
+                            )}
+                          </p>
                           <p>
                             Email:{" "}
-                            <a href={`mailto:${intern.email}`}>
-                              {intern.email}
+                            <a href={`mailto:${internInfo.email}`}>
+                              {internInfo.email}
                             </a>
                           </p>
                           <p>
@@ -90,10 +116,16 @@ export default function StepsIntern(props) {
                       ) : (
                         <>
                           <h4>Decision</h4>
-                          <br/>
-                          <p><i class="fa-solid fa-thumbs-up"></i> <a>Send an Email to Confirm</a></p>
-                          <br/>
-                          <p><i class="fa-solid fa-thumbs-down"></i> <a>Send an Email to Reject</a></p>
+                          <br />
+                          <p>
+                            <i class="fa-solid fa-thumbs-up"></i>{" "}
+                            <a>Send an Email to Confirm</a>
+                          </p>
+                          <br />
+                          <p>
+                            <i class="fa-solid fa-thumbs-down"></i>{" "}
+                            <a>Send an Email to Reject</a>
+                          </p>
                         </>
                       )}
                     </Typography>

@@ -51,8 +51,11 @@ export const applyInternships =
           Authorization: `Bearer ${internInfo.token}`,
         },
       };
+
+      console.log(internInfo);
       const { data } = await axios.put(
-        `/api/interns/enroll-internship/${number}/`, {},
+        `/api/interns/enroll-internship/${number}/`,
+        internInfo,
         config
       );
 

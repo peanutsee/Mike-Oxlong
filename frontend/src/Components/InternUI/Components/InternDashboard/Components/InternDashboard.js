@@ -31,9 +31,7 @@ function InternDashboard() {
         className="my-5 d-flex justify-content-center"
       >
         <Tab eventKey="internships" title="Internships">
-          {internData && (
-            <ManageInternships internData={internData} />
-          )}
+          {internData && <ManageInternships internData={internData} />}
         </Tab>
         <Tab eventKey="project" title="Projects">
           {internData && <ManageProjects projects={internData.projects} />}
