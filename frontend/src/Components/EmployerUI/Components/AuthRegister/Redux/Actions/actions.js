@@ -18,7 +18,7 @@ export const handleEmployerRegistration = (details) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post("/api/users/register", details, config);
+    const { data } = await axios.post("/api/users/register/", details, config);
     dispatch({ type: EMPLOYER_REGISTER_SUCCESS, payload: data });
 
     dispatch({
