@@ -1,12 +1,24 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
 import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import ProgressSteps from "../../../../Commons/Components/ProgressSteps/ProgressSteps";
 import EditableTable from "../../../../Commons/Components/EditableTable/EditableTable";
 
 function EmployerDashboard() {
+  const navigate = useNavigate();
   const { TabPane } = Tabs;
+
+  const employerLogin = useSelector((state) => state.employerLoginReducer);
+  const { employerInfo } = employerLogin;
+
+  useEffect(() => {
+    if (!employerInfo) {
+      navigate("/employer-portal");
+    }
+  }, [navigate, employerInfo]);
 
   return (
     <Container>

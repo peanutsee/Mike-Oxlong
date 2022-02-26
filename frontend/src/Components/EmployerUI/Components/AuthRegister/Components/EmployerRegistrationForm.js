@@ -33,7 +33,7 @@ function EmployerRegistrationForm({ history }) {
 
   useEffect(() => {
     if (employerInfo) {
-      navigate('/employer-ui');
+      navigate('/employer-dash');
     }
   }, [navigate, employerInfo]);
 
