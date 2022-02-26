@@ -1,17 +1,24 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { handleInternRegistration } from "../Redux/Actions/actions";
 import { useDispatch } from "react-redux";
-
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-
 import FileUpload from "../../../../../Commons/Components/FileUpload/index";
-
 import Multiselect from "multiselect-react-dropdown";
-
 import "./RegistrationForm.css";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function InternRegistrationForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const internLogin = useSelector((state) => state.internLoginReducer);
+  const { internInfo } = internLogin;
+  useEffect(() => {
+    if (internInfo.length !== 0) {
+      navigate("/intern-dashboard");
+    }
+  }, [navigate, internInfo]);
 
   // Form States
   const [firstName, setFirstName] = useState("");
@@ -166,7 +173,7 @@ function InternRegistrationForm() {
                 type="radio"
                 name="educationLevel"
                 label="Polytechnic"
-                value="ITE"
+                value="Polytechnic"
                 onChange={handleEducationLevel}
               ></Form.Check>
               <Form.Check
@@ -174,7 +181,7 @@ function InternRegistrationForm() {
                 type="radio"
                 name="educationLevel"
                 label="University"
-                value="ITE"
+                value="University"
                 onChange={handleEducationLevel}
               ></Form.Check>
               <Form.Check
@@ -227,7 +234,7 @@ function InternRegistrationForm() {
           <Row className="d-flex justify-content-center">
             <Col md="auto">
               <Button id="next-btn" onClick={handleRegistration}>
-                NEXT
+                Register
               </Button>
             </Col>
           </Row>
