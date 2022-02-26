@@ -40,7 +40,7 @@ function CreateInternshipForm() {
   };
 
   useEffect(() => {
-    if (!employerInfo) {
+    if (employerInfo.length === 0) {
       navigate("/");
     }
   }, [navigate, employerInfo]);
