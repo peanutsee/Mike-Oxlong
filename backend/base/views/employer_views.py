@@ -25,13 +25,16 @@ def getDashboard(request):
         internship['enrolled_intern'] = []
         for intern in intern_list:
             user = User.objects.get(id=intern)
-            intern_profile = InternProfile.objects.get(user=user)
-            intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
-            intern_profile_data = intern_profile_serialized.data
-            user_serialized = UserSerializer(user)
-            user_data = user_serialized.data
-            user_data.update(intern_profile_data)
-            internship['enrolled_intern'].append(user_data)
+            try:
+                intern_profile = InternProfile.objects.get(user=user)
+                intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
+                intern_profile_data = intern_profile_serialized.data
+                user_serialized = UserSerializer(user)
+                user_data = user_serialized.data
+                user_data.update(intern_profile_data)
+                internship['enrolled_intern'].append(user_data)
+            except:
+                pass
 
     # Projects
     projects = Project.objects.filter(project_employer=employer_profile)
@@ -42,13 +45,16 @@ def getDashboard(request):
         intern_list = project['enrolled_intern']
         project['enrolled_intern'] = []
         for intern in intern_list:
-            user = User.objects.get(id=intern)
-            intern_profile = InternProfile.objects.get(user=user)
-            intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
-            intern_profile_data = intern_profile_serialized.data
-            user_serialized = UserSerializer(user)
-            user_data = user_serialized.data
-            user_data.update(intern_profile_data)
-            project['enrolled_intern'].append(user_data)
+            try:
+                user = User.objects.get(id=intern)
+                intern_profile = InternProfile.objects.get(user=user)
+                intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
+                intern_profile_data = intern_profile_serialized.data
+                user_serialized = UserSerializer(user)
+                user_data = user_serialized.data
+                user_data.update(intern_profile_data)
+                project['enrolled_intern'].append(user_data)
+            except:
+                pass
 
     return Response(result, status=status.HTTP_200_OK)

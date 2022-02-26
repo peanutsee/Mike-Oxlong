@@ -20,6 +20,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Get Intern Data
         user = User.objects.filter(id=serializer['id'])[0]
+        intern_profile_data=None
         try:
             intern_profile = InternProfile.objects.filter(user=user)[0]
             intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
@@ -29,7 +30,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         for k, v in serializer.items():
             data[k] = v
-        data.update(intern_profile_data)
+        if intern_profile_data:
+            data.update(intern_profile_data)
         return data
 
 

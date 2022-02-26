@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Row, Col, Image } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -23,14 +25,23 @@ const data = [
 ];
 
 function CoursesSites() {
+  const navigate = useNavigate();
+  const internLogin = useSelector((state) => state.internLoginReducer);
+  const { internInfo } = internLogin;
+
+  useEffect(() => {
+    if (internInfo.length === 0) {
+      navigate("/intern-portal");
+    }
+  }, [navigate, internInfo]);
   return (
     <div className="p-5 my-5">
       <h2>Check out these website for courses!</h2>
-      <Row >
+      <Row>
         {data.map((site) => (
           <Col sm={4}>
             <a href={site.url}>
-              <Card>
+              <Card className="h-100">
                 <Card.Body>
                   <div className="d-flex justify-content-center">
                     <Image fluid src={site.image} />
