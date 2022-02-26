@@ -40,7 +40,7 @@ def retrieveInternships(request):
 
     return Response(internships_data, status=status.HTTP_200_OK)
 
-# Retrieve Courses
+# Retrieve Projects
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def retrieveProjects(request):
@@ -49,6 +49,17 @@ def retrieveProjects(request):
     projects_data = projects_serialized.data
 
     return Response(projects_data, status=status.HTTP_200_OK)
+
+# Retrieve Courses
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def retrieveCourses(request):
+    courses = Course.objects.all()
+    courses_serialized = CourseSerializer(courses, many=True)
+    courses_data = courses_serialized.data
+
+    return Response(courses_data, status=status.HTTP_200_OK)
+
 
 # Enroll To Internship
 @api_view(['PUT'])

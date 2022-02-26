@@ -17,3 +17,7 @@ class InternshipAdmin(admin.ModelAdmin):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Course)
+class CourseAdmin(admin.ModelAdmin):
+    pass

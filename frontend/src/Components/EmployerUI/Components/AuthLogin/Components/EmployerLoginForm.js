@@ -9,10 +9,6 @@ function EmployerLoginForm() {
   const navigate = useNavigate();
 
   const employerLogin = useSelector((state) => state.employerLoginReducer);
-
-  if (true) {
-    console.log(employerLogin);
-  }
   const { employerInfo } = employerLogin;
 
   // Form States

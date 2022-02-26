@@ -8,7 +8,7 @@ class InternProfile(models.Model):
     education = models.TextField(default="Kindergarten")
     resume = models.FileField(upload_to='resumes/')
     is_intern = models.BooleanField(default=True)
-    objects = models.manager
+    objects = models.Manager()
 
     def __str__(self):
         return f"{self.user.username} Profile"
@@ -17,10 +17,19 @@ class EmployerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     company_details = models.TextField()
     is_intern = models.BooleanField(default=False)
-    objects = models.manager
+    objects = models.Manager()
 
     def __str__(self):
         return f"{self.user.username} Profile"
+
+class Course(models.Model):
+    course_name = models.TextField()
+    course_description = models.TextField()
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.course_name
 
 class Internship(models.Model):
     internship_employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE)

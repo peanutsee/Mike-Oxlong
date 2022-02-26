@@ -1,16 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Card, Row, Col, Image } from "react-bootstrap";
+import { getCourses } from "../Redux/Actions/actions";
 
 function RecommendedCourses() {
+  const dispatch = useDispatch();
   const internLogin = useSelector((state) => state.internLoginReducer);
   const { internInfo } = internLogin;
 
-  return <div className='p-5 my-5'>
+  const coursesReducer = useSelector((state) => state.retrieveCoursesReducer);
+  const { courses } = coursesReducer;
+  useEffect(() => {
+    dispatch(getCourses());
+  }, [dispatch]);
+
+  return (
+    <div className="p-5 mb-5">
       <h2>Because you are interested in....</h2>
-      <p>{internInfo.interests.substring(2,internInfo.interests.length-2).split("', '").map(skill => <li>{skill}</li>)}</p>
+      <p>
+        {internInfo &&
+          internInfo.interests
+            .substring(2, internInfo.interests.length - 2)
+            .split("', '")
+            .map((skill) => <li>{skill}</li>)}
+      </p>
       <h5>Try these courses!</h5>
-  </div>;
+      <Row>
+        {courses &&
+          courses.map((course) => (
+            <Col sm={3}>
+              <Card className="h-100">
+                <Card.Title className="py-2 text-center">
+                  {course.course_name}
+                </Card.Title>
+                <Card.Body>{course.course_description}</Card.Body>
+                <Card.Footer className="d-flex justify-content-end">
+                  <Button>Enroll</Button>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+      </Row>
+    </div>
+  );
 }
 
 export default RecommendedCourses;
