@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { handleInternRegistration } from "../../Redux/Actions/actions";
+import { handleInternRegistration } from "../Redux/Actions/actions";
 import { useDispatch } from "react-redux";
 
 import { Container, Row, Col, Form, Button } from "react-bootstrap";

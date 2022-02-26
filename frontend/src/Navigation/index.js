@@ -3,11 +3,13 @@ import { lazy } from "react";
 const LandingPage = lazy(() => import("../Components/LandingPage"));
 
 // Employer Routes
-const EmployerGateway = lazy (() => import("../Components/EmployerUI/Components/Gateway"))
-const EmployerRegistration = lazy(() => import('../Components/EmployerUI/Components/AuthRegister'))
-const EmployerLogin = lazy(() => import('../Components/EmployerUI/Components/AuthLogin'))
-const EmployerCreateProject = lazy(() => import('../Components/EmployerUI/Components/MakeProject'))
-const EmployerCreateInternship = lazy(() => import('../Components/EmployerUI/Components/MakeInternship'))
+
+const EmployerCreateProject = lazy(() =>
+  import("../Components/EmployerUI/Components/MakeProject")
+);
+const EmployerCreateInternship = lazy(() =>
+  import("../Components/EmployerUI/Components/MakeInternship")
+);
 
 const EmployerGateway = lazy(() =>
   import("../Components/EmployerUI/Components/Gateway")
@@ -54,15 +56,15 @@ export const NAVIGATION_ROUTES = Object.freeze({
   },
 
   employerProject: {
-    path: '/create-project',
-    element: <EmployerCreateProject />
+    path: "/create-project",
+    element: <EmployerCreateProject />,
   },
 
   employerInternship: {
-    path: '/create-internship',
-    element: <EmployerCreateInternship />
+    path: "/create-internship",
+    element: <EmployerCreateInternship />,
   },
-    
+
   // Interns-Only Routes
   internGateway: {
     path: "/intern-portal",
