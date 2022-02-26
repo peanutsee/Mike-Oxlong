@@ -25,7 +25,7 @@ function InternDashboard() {
     }
   }, [navigate, internInfo]);
 
-  const tableEntries = [
+  const jobApplications = [
     {
       "Job Title": "CEO",
       "Job Description": "Long text here pls",
@@ -39,6 +39,27 @@ function InternDashboard() {
     {
       "Job Title": "DEO",
       "Job Description": "TEXT MEHASDHHADSU",
+      Status: "Star",
+    },
+  ];
+
+  const projectApplications = [
+    {
+      "Project Title": "Build Social Networking Site",
+      "Job Description": "Long text here pls",
+      Company: "Facebook",
+      Status: "Star",
+    },
+    {
+      "Project Title": "Build iNTUition v8.0 Hackathon Project",
+      "Job Description": "Long text here pls",
+      Company: "IEEE",
+      Status: "Star",
+    },
+    {
+      "Project Title": "Make Money",
+      "Job Description": "Long text here pls",
+      Company: "Money.Com",
       Status: "Star",
     },
   ];
@@ -66,9 +87,11 @@ function InternDashboard() {
           </Row>
         </TabPane>
         <TabPane tab="Manage Job Applications" key="2">
-          <EditableTableIntern tableEntries={tableEntries} />
+          <EditableTableIntern tableEntries={jobApplications} />
         </TabPane>
-        <TabPane tab="Manage Project Applications" key="3"></TabPane>
+        <TabPane tab="Manage Project Applications" key="3">
+          <EditableTableIntern tableEntries={projectApplications} />
+        </TabPane>
       </Tabs>
     </Container>
   );
