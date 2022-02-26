@@ -16,7 +16,6 @@ Handles Intern and Employee views:
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
-
         serializer = UserSerializerWithToken(self.user).data
         for k, v in serializer.items():
             data[k] = v
@@ -38,7 +37,6 @@ def registerUser(request):
         Response: data or error message
     """
     data = request.data
-    print(data)
     if data['is_intern']:
         try:
             user = User.objects.get(email=data['email'])
@@ -70,32 +68,32 @@ def registerUser(request):
             except:
                 message = {'detail': 'Intern registration not successful!'}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        else:
+    else:
+        try:
+            user = User.objects.get(email=data['email'])
+            if user:
+                message = {'detail': 'Employer with this email already exists'}
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        except:
             try:
-                user = User.objects.get(email=data['email'])
-                if user:
-                    message = {'detail': 'Employer with this email already exists'}
-                    return Response(message, status=status.HTTP_400_BAD_REQUEST)
+                user = User.objects.create(
+                    first_name=data['firstName'],
+                    last_name=data['lastName'],
+                    username=data['email'],
+                    email=data['email'],
+                    password=make_password(data['password'])
+                )
+
+                profile = EmployerProfile.objects.create(
+                    user=user,
+                    company_details=data['companyDetails']
+                )
+
+                user_serializer = UserSerializerWithToken(user, many=False)
+                profile_serializer = EmployerProfileSerializer(profile, many=False)
+                user_data, profile_data = user_serializer.data, profile_serializer.data
+                user_data.update(profile_data)
+                return Response(user_data, status=status.HTTP_201_CREATED)
             except:
-                try:
-                    user = User.objects.create(
-                        first_name=data['firstName'],
-                        last_name=data['lastName'],
-                        username=data['email'],
-                        email=data['email'],
-                        password=make_password(data['password'])
-                    )
-
-                    profile = EmployerProfile.objects.create(
-                        user=user,
-                        company_details=data['companyDetails']
-                    )
-
-                    user_serializer = UserSerializerWithToken(user, many=False)
-                    profile_serializer = EmployerProfileSerializer(profile, many=False)
-                    user_data, profile_data = user_serializer.data, profile_serializer.data
-                    user_data.update(profile_data)
-                    return Response(user_data, status=status.HTTP_201_CREATED)
-                except:
-                    message = {'detail': 'Employer registration not successful!'}
-                    return Response(message, status=status.HTTP_400_BAD_REQUEST)
+                message = {'detail': 'Employer registration not successful!'}
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)

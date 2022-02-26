@@ -10,6 +10,10 @@ const EmployerRegistration = lazy(() =>
   import("../Components/EmployerUI/Components/AuthRegister")
 );
 
+const EmployerLogin = lazy(() =>
+  import("../Components/EmployerUI/Components/AuthLogin")
+);
+
 // Intern Routes
 const InternGateway = lazy(() =>
   import("../Components/InternUI/Components/Gateway")
@@ -36,6 +40,11 @@ export const NAVIGATION_ROUTES = Object.freeze({
   employerRegistration: {
     path: "/employer-register",
     element: <EmployerRegistration />,
+  },
+
+  employerLogin: {
+    path: "/employer-login",
+    element: <EmployerLogin />,
   },
 
   // Interns-Only Routes

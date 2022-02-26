@@ -8,7 +8,6 @@ import { EMPLOYER_LOGIN_SUCCESS } from "../../../AuthLogin/Redux/Constants/const
 import axios from "axios";
 
 export const handleEmployerRegistration = (details) => async (dispatch) => {
-  console.log(details);
   try {
     dispatch({ type: EMPLOYER_REGISTER_REQUEST });
 
@@ -18,7 +17,7 @@ export const handleEmployerRegistration = (details) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post("/api/users/register", details, config);
+    const { data } = await axios.post("/api/users/register/", details, config);
     dispatch({ type: EMPLOYER_REGISTER_SUCCESS, payload: data });
 
     dispatch({
