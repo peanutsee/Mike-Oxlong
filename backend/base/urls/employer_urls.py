@@ -6,4 +6,5 @@ Handles all URL paths related to employer.
 """
 
 urlpatterns = [
+    path('employer-dashboard/', views.getDashboard),
 ]

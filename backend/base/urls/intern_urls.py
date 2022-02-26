@@ -6,4 +6,9 @@ Handles all URL paths related to interns.
 """
 
 urlpatterns = [
+    path('intern-dashboard/', views.getDashboard),
+    path('retrieve-internships/', views.retrieveInternships),
+    path('retrieve-projects/', views.retrieveProjects),
+    path('enroll-internship/<int:pk>/', views.enrollInternship),
+    path('enroll-project/<int:pk>/', views.enrollProject),
 ]
