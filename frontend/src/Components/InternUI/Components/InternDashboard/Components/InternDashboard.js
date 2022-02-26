@@ -35,7 +35,7 @@ function InternDashboard() {
   console.log("Dashboard");
   console.log(dashboard);
 
-  if (loading === true) {
+  if (loading === false) {
     console.log("loading is " + loading);
     const { internships, projects } = dashboardData;
 
