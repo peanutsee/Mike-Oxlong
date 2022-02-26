@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { handleEmployerRegistration } from "../Redux/Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom'
 
-function EmployerRegistrationForm() {
+function EmployerRegistrationForm({ history }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const employerLogin = useSelector((state) => state.employerLoginReducer);
+  const { employerInfo } = employerLogin;
 
   // Form States
   const [email, setEmail] = useState("");
@@ -14,17 +19,24 @@ function EmployerRegistrationForm() {
   const [details, setDetails] = useState("");
 
   const handleRegistration = () => {
-    let data = {
+    let dets = {
       // Make sure same field names as backend
       is_intern: false,
       email: email,
       firstName: firstName,
       lastName: lastName,
       password: password,
-      companyDetails: details
+      companyDetails: details,
     };
-    dispatch(handleEmployerRegistration(data));
+    dispatch(handleEmployerRegistration(dets));
   };
+
+  useEffect(() => {
+    if (employerInfo) {
+      navigate('/employer-ui');
+    }
+  }, [navigate, employerInfo]);
+
   return (
     <Container className="py-5 my-5">
       <Form

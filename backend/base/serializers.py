@@ -47,5 +47,5 @@ class InternshipSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Internship
+        model = Project
         fields = '__all__'
