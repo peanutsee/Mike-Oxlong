@@ -1,8 +1,9 @@
 import React from 'react'
+import EmployerRegistrationForm from './Components/EmployerRegistrationForm'
 
 function index() {
   return (
-    <div>index</div>
+    <div><EmployerRegistrationForm/></div>
   )
 }
 
