@@ -5,14 +5,17 @@ import { Col } from "react-bootstrap";
 import "./style.css";
 
 function ProgressSteps(prop) {
-  const { name, steps, number } = prop;
+  const { name, steps, number, intern } = prop;
 
   const [step] = steps;
   const { Step } = Steps;
   const [leftStep, setLeftStep] = useState(0);
-  const onClickLeft = (curr) => {
-    setLeftStep(curr);
-  };
+
+  const onClickLeft = intern
+    ? null
+    : (curr) => {
+        setLeftStep(curr);
+      };
   console.log(steps);
   return (
     <Col xs={10}>
