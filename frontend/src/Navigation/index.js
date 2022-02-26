@@ -7,6 +7,8 @@ const InternRegistration = lazy(() => import("../Components/InternUI"));
 const EmployerGateway = lazy (() => import("../Components/EmployerUI/Components/Gateway"))
 const EmployerRegistration = lazy(() => import('../Components/EmployerUI/Components/AuthRegister'))
 const EmployerLogin = lazy(() => import('../Components/EmployerUI/Components/AuthLogin'))
+const EmployerCreateProject = lazy(() => import('../Components/EmployerUI/Components/MakeProject'))
+const EmployerCreateInternship = lazy(() => import('../Components/EmployerUI/Components/MakeInternship'))
 
 export const NAVIGATION_ROUTES = Object.freeze({
   // Everyone Can Access Routes
@@ -32,6 +34,15 @@ export const NAVIGATION_ROUTES = Object.freeze({
     element: <EmployerLogin/>
   },
 
+  employerProject: {
+    path: '/create-project',
+    element: <EmployerCreateProject />
+  },
+
+  employerInternship: {
+    path: '/create-internship',
+    element: <EmployerCreateInternship />
+  },
 
   // Interns-Only Routes
   internRegistration: {

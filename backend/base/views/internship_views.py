@@ -21,3 +21,23 @@ def retrieveInternships(request, pk):
     internship_serialized = InternshipSerializer(internship, many=False)
     internship_data = internship_serialized.data
     return Response(internship_data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createInternship(request):
+    data = request.data
+    employer_profile = EmployerProfile.objects.filter(user=request.user)[0]
+    internship = Internship.objects.create(
+        internship_employer=employer_profile,
+        internship_title=data['internship_title'],
+        internship_description=data['internship_description'],
+        internship_compensation=data['internship_compensation'],
+        internship_location=data['internship_location'],
+        internship_hard_skills=data['internship_hard_skills'],
+        internship_soft_skills=data['internship_soft_skills'],
+        internship_learning_outcome=data['internship_learning_outcome'],
+        internship_industry=data['internship_industry'],
+    )
+    internship_serialized = InternshipSerializer(internship, many=False)
+    internship_data = internship_serialized.data
+    return Response(internship_data, status=status.HTTP_200_OK)
