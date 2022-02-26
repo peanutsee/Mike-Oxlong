@@ -32,6 +32,7 @@ class Internship(models.Model):
     internship_soft_skills = models.CharField(max_length=255, null=True, blank=True)
     internship_learning_outcome = models.CharField(max_length=255, null=True, blank=True)
     internship_industry = models.TextField(null=True, blank=True)
+    enrolled_intern = models.ManyToManyField(User)
 
     objects = models.Manager()
 
@@ -44,6 +45,8 @@ class Project(models.Model):
     project_description = models.TextField(null=True, blank=True)
     project_is_mentored = models.BooleanField(default=False)
     project_hard_skills = models.TextField(null=True, blank=False)
+    enrolled_intern = models.ManyToManyField(User)
+
     objects = models.Manager()
 
     def __str__(self):
