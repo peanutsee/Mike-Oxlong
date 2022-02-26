@@ -25,7 +25,7 @@ function EmployerLoginForm() {
 
   useEffect(() => {
     if (employerInfo) {
-      navigate('/employer-ui');
+      navigate('/employer-dash');
     }
   }, [navigate, employerInfo]);
   
