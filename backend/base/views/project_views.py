@@ -21,3 +21,19 @@ def retrieveProject(request, pk):
     project_serialized = ProjectSerializer(project, many=False)
     project_data = project_serialized.data
     return Response(project_data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createProject(request):
+    data = request.data
+    employer_profile = EmployerProfile.objects.filter(user=request.user)[0]
+    project = Project.objects.create(
+        project_employer=employer_profile,
+        project_title=data['project_title'],
+        project_description=data['project_description'],
+        project_is_mentored=data['project_is_mentored'],
+        project_hard_skills=data['project_hard_skills'],
+    )
+    project_serialized = ProjectSerializer(project, many=False)
+    project_data = project_serialized.data
+    return Response(project_data, status=status.HTTP_200_OK)

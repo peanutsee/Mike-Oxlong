@@ -4,20 +4,32 @@ import {
   Container,
   Offcanvas,
   Nav,
-  NavDropdown,
-  Form,
-  FormControl,
   Button,
+  ListGroup,
 } from "react-bootstrap";
-
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { employerLogout } from "../../Components/EmployerUI/Components/AuthLogin/Redux/Actions/actions";
 
 function AppHeader() {
+  const dispatch = useDispatch();
+  const employerLogin = useSelector((state) => state.employerLoginReducer);
+  const { employerInfo } = employerLogin;
+
+  // const internLogin = useSelector((state) => state.internLoginReducer);
+  // const { data: internData } = internLogin;
+
+  const handleEmployerLogout = () => {
+    dispatch(employerLogout());
+  };
+
   return (
     <div>
       <Navbar bg="light" expand={false}>
         <Container fluid>
-          <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>Easy Intern Inc.</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
             id="offcanvasNavbar"
@@ -26,36 +38,83 @@ function AppHeader() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
-                Offcanvas
+                Easy Intern Inc.
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="">Home</Nav.Link>
+                {employerInfo.length !== 0 ? (
+                  <>
+                    <ListGroup className="shadow shadow-100">
+                      <ListGroup.Item>
+                        <Link to="/employer-ui">
+                          <Nav.Item>Dashboard</Nav.Item>
+                        </Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/create-project">Create Project</Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/create-internship">Create Internship</Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/employer-profile">
+                          Employer Profile Management
+                        </Link>
+                      </ListGroup.Item>
+                    </ListGroup>
+                    <Button
+                      onClick={handleEmployerLogout}
+                      type="submit"
+                      className="btn btn-secondary my-5"
+                    >
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <ListGroup>
+                      <ListGroup.Item>
+                        <Link to="/intern-portal">
+                          <Nav.Item>Intern Portal</Nav.Item>
+                        </Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/employer-portal">
+                          <Nav.Item>Employer Portal</Nav.Item>
+                        </Link>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </>
+                )}
 
-                <Link to="/intern-register">
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                </Link>
-                <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown>
+
+                {/* 
+                {internData && (
+                  <>
+                    <ListGroup className='shadow shadow-100'>
+                      <ListGroup.Item>
+                        <Link to="/intern-ui">
+                          <Nav.Item>Dashboard</Nav.Item>
+                        </Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/upskill">Courses</Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/internships">Internships</Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/projects">Projects</Link>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Link to="/intern-profile">Intern Profile Management</Link>
+                      </ListGroup.Item>
+                    </ListGroup>
+                    <Button onClick={handleInternLogout} type='submit' className="btn btn-secondary my-5">Logout</Button>
+                  </>
+                )} */}
               </Nav>
-              <Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

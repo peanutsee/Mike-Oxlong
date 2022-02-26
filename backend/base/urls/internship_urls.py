@@ -7,5 +7,6 @@ Handles all URL paths related to internships.
 
 urlpatterns = [
     path("retrieve-internships/", views.retrieveAllInternships),
-    path("retrieve-intern/<int:id>/", views.retrieveInternships)
+    path("retrieve-intern/<int:id>/", views.retrieveInternships),
+    path("create-internship/", views.createInternship)
 ]

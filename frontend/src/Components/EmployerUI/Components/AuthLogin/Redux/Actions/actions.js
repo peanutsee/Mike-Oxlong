@@ -2,6 +2,7 @@ import {
   EMPLOYER_LOGIN_REQUEST,
   EMPLOYER_LOGIN_SUCCESS,
   EMPLOYER_LOGIN_ERROR,
+  EMPLOYER_LOGOUT
 } from "../Constants/constants";
 import axios from "axios";
 
@@ -30,4 +31,10 @@ export const handleEmployerLogin = (details) => async (dispatch) => {
       payload: "Error Login Employee",
     });
   }
+};
+
+
+export const employerLogout = () => (dispatch) => {
+  localStorage.removeItem("employerInfo");
+  dispatch({ type: EMPLOYER_LOGOUT });
 };
