@@ -33,7 +33,7 @@ function AppHeader() {
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="">Home</Nav.Link>
 
-                <Link to="/intern/register">
+                <Link to="/intern-register">
                   <Nav.Link href="#action2">Link</Nav.Link>
                 </Link>
                 <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
