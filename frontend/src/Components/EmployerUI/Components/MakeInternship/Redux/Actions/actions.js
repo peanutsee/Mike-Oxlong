@@ -5,7 +5,7 @@ import {
 } from "../Constants/constants";
 import axios from "axios";
 
-export const createInternship= (details) => async (dispatch, getState) => {
+export const createInternship = (details) => async (dispatch, getState) => {
   try {
     dispatch({ type: CREATE_INTERNSHIP_REQUEST });
 
@@ -27,6 +27,9 @@ export const createInternship= (details) => async (dispatch, getState) => {
     );
     dispatch({ type: CREATE_INTERNSHIP_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: CREATE_INTERNSHIP_ERROR, payload: "Error Creating Internship" });
+    dispatch({
+      type: CREATE_INTERNSHIP_ERROR,
+      payload: "Error Creating Internship",
+    });
   }
 };

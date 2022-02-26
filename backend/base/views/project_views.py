@@ -26,6 +26,10 @@ def retrieveProject(request, pk):
 @permission_classes([IsAuthenticated])
 def createProject(request):
     data = request.data
+    if data['project_is_mentored'] == 'false':
+        data['project_is_mentored'] = False
+    else:
+        data['project_is_mentored'] = True
     employer_profile = EmployerProfile.objects.filter(user=request.user)[0]
     project = Project.objects.create(
         project_employer=employer_profile,
