@@ -52,16 +52,14 @@ def retrieveProjects(request):
 
 # Enroll To Internship
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
 def enrollInternship(request, pk):
     internship = Internship.objects.filter(id=pk)[0]
-    internship.enrolled_intern.add(request.user)
+    internship.enrolled_intern.add(request.user.id)
     return Response("Enrolled", status=status.HTTP_200_OK)
 
 # Enroll To Project
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
 def enrollProject(request, pk):
     project = Project.objects.filter(id=pk)[0]
-    project.enrolled_intern.add(request.user)
+    project.enrolled_intern.add(request.user.id)
     return Response("Enrolled", status=status.HTTP_200_OK)

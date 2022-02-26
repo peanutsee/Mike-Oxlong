@@ -7,6 +7,8 @@ import * as createProjectReducer from "../../Components/EmployerUI/Components/Ma
 import * as createInternshipReducer from "../../Components/EmployerUI/Components/MakeInternship/Redux/Reducers/reducers";
 import * as internRegistrationReduce from "../../Components/InternUI/Components/AuthRegister/Redux/Reducers/reducers";
 import * as internLoginReducer from "../../Components/InternUI/Components/AuthLogin/Redux/Reducers/reducers";
+import * as retreiveInternshipReducer from '../../Components/InternUI/Components/Internships/Redux/Reducers/reducers'
+import * as retreiveProjectsReducer from '../../Components/InternUI/Components/Projects/Redux/Reducers/reducers'
 
 export const reducer = combineReducers({
   ...employerRegistrationReducer,
@@ -15,4 +17,6 @@ export const reducer = combineReducers({
   ...createInternshipReducer,
   ...internRegistrationReduce,
   ...internLoginReducer,
+  ...retreiveInternshipReducer,
+  ...retreiveProjectsReducer,
 });

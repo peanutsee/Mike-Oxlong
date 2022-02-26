@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ProjectsList from "./Components/ProjectsList";
 
 function index() {
   return (
-    <div>index</div>
-  )
+    <div>
+      <ProjectsList />
+    </div>
+  );
 }
 
-export default index
+export default index;
