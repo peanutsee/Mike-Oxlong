@@ -7,7 +7,7 @@ import AppHeader from "./Commons/Nav/AppHeader";
 import AppFooter from "./Commons/Nav/AppFooter";
 import "./bootstrap.min.css";
 import "antd/dist/antd.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Commons/ScrollToTop";
 
 ReactDOM.render(

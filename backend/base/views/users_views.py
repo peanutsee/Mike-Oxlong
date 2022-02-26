@@ -38,6 +38,7 @@ def registerUser(request):
         Response: data or error message
     """
     data = request.data
+    print(data)
     if data['is_intern']:
         try:
             user = User.objects.get(email=data['email'])
@@ -87,7 +88,7 @@ def registerUser(request):
 
                     profile = EmployerProfile.objects.create(
                         user=user,
-                        #TODO: Update Fields
+                        company_details=data['companyDetails']
                     )
 
                     user_serializer = UserSerializerWithToken(user, many=False)

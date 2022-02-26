@@ -16,7 +16,6 @@ class InternProfile(models.Model):
 
 class EmployerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    #TODO: Add Fields for Employer
     company_details = models.TextField()
     is_intern = models.BooleanField(default=False)
     objects = models.manager
