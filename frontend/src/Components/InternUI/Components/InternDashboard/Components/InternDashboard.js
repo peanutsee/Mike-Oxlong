@@ -86,10 +86,7 @@ function InternDashboard() {
             </Col>
           </Row>
         </TabPane>
-        <TabPane tab="Manage Job Applications" key="2">
-          <EditableTableIntern tableEntries={jobApplications} />
-        </TabPane>
-        <TabPane tab="Manage Project Applications" key="3">
+        <TabPane tab="Manage Project Applications" key="2">
           <EditableTableIntern tableEntries={projectApplications} />
         </TabPane>
       </Tabs>
