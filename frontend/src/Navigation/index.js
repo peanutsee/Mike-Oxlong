@@ -33,7 +33,7 @@ const InternRegistration = lazy(() =>
 );
 
 export const NAVIGATION_ROUTES = Object.freeze({
-  // Everyone Can Access Routes
+  // Everyone Can Access Routes 
   home: {
     path: "/",
     exact: true,

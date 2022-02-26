@@ -18,7 +18,8 @@ function EmployerRegistrationForm({ history }) {
   const [password, setPassword] = useState("");
   const [details, setDetails] = useState("");
 
-  const handleRegistration = () => {
+  const handleRegistration = (e) => {
+    e.preventDefault()
     let dets = {
       // Make sure same field names as backend
       is_intern: false,
@@ -32,8 +33,8 @@ function EmployerRegistrationForm({ history }) {
   };
 
   useEffect(() => {
-    if (employerInfo) {
-      navigate('/employer-ui');
+    if (employerInfo.length !== 0) {
+      navigate('/employer-dash');
     }
   }, [navigate, employerInfo]);
 

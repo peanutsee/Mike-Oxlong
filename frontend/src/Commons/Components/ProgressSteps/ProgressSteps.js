@@ -8,7 +8,6 @@ function ProgressSteps(prop) {
   const { name, steps, number } = prop;
 
   const [step] = steps;
-
   const { Step } = Steps;
   const [leftStep, setLeftStep] = useState(0);
   const onClickLeft = (curr) => {
