@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# ----- USER MODELS -----
 class InternProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     interests = models.TextField()
