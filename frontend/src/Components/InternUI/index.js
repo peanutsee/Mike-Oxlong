@@ -5,7 +5,9 @@ import RegistrationForm from "./Registration/RegistrationForm";
 function index() {
   return (
     <Container>
-      Intern Registration Page
+      <Container className="text-center fw-bold fs-3 my-5">
+        Tell us about you
+      </Container>
       <RegistrationForm />
     </Container>
   );

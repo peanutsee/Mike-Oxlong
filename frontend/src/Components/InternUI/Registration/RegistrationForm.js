@@ -1,74 +1,79 @@
-// import Form from "antd/lib/form/Form";
 import React from "react";
 
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+import { FileUpload } from "../../../Commons/Components/FileUpload/FileUpload.js";
+
+import "./RegistrationForm.css";
 
 function RegistrationForm() {
   return (
     <Form>
-      <Container fluid>
-        <Row>
-          <Form.Group as="col">
-            <label for="name" class="form-label">
-              Name
-            </label>
-            <input
-              type="email" // Change this
-              class="form-control"
-              id="nameInput"
-              aria-describedby="emailHelp" // Chaneg this
-              placeholder="Name..."
-            />
-          </Form.Group>
+      <Container>
+        <div className="mb-3 fw-bold">Personal Details</div>
+        <Row className="mb-3">
+          <Col>
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control placeholder="Name..."></Form.Control>
+            </Form.Group>
+          </Col>
 
-          <Form.Group as="col">
-            <label for="handphoneNumber" class="form-label">
-              Handphone Number
-            </label>
-            <input
-              type="email" // Change this
-              class="form-control"
-              id="nameInput"
-              aria-describedby="emailHelp" // Chaneg this
-              placeholder="Number..."
-            />
-          </Form.Group>
+          <Col>
+            <Form.Group>
+              <Form.Label>Handphone Number</Form.Label>
+              <Form.Control placeholder="Number..."></Form.Control>
+            </Form.Group>
+          </Col>
         </Row>
-
-        <Col class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Type..."
-          />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-          </div>
-        </Col>
-        <Col class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </Col>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
-        </button>
+        <Row className="mb-3">
+          <Col>
+            <Form.Group>
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control placeholder="Type..."></Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+        <hr className="my-5"></hr>
+        <div className="fw-bold mb-3">Education Level</div>
+        <Row>
+          <Container className="d-flex justify-content-between">
+            <Form.Check
+              inline
+              type="radio"
+              name="educationLevel"
+              label="ITE"
+            ></Form.Check>
+            <Form.Check
+              inline
+              type="radio"
+              name="educationLevel"
+              label="Polytechnic"
+            ></Form.Check>
+            <Form.Check
+              inline
+              type="radio"
+              name="educationLevel"
+              label="University"
+            ></Form.Check>
+            <Form.Check
+              inline
+              type="radio"
+              name="educationLevel"
+              label="Others"
+            ></Form.Check>
+          </Container>
+        </Row>
+        <hr className="my-5"></hr>
+        <div className="fw-bold mb-3">Resume</div>
+        <Row className="mb-5">
+          <FileUpload></FileUpload>
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <Col md="auto">
+            <Button id="next-btn">NEXT</Button>
+          </Col>
+        </Row>
       </Container>
     </Form>
   );

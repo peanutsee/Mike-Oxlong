@@ -1,0 +1,18 @@
+#file-upload-btn {
+    background-color: transparent;
+    border-radius: 1.5rem;
+    border: 2px solid #AA8CFF;
+    color: #AA8CFF;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; 
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem; 
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+#file-upload-btn:hover {
+    background-color:#AA8CFF;
+    color: white;
+}
