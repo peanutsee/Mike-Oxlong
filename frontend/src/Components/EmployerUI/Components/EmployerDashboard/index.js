@@ -8,13 +8,10 @@ import ProgressSteps from "../../../../Commons/Components/ProgressSteps/Progress
 import EditableTable from "../../../../Commons/Components/EditableTable/EditableTable";
 import LeftList from "../../../../Commons/Components/ProgressSteps/LeftList";
 
-import test from "./Data/test.json";
-
 function EmployerDashboard() {
   const navigate = useNavigate();
   const { TabPane } = Tabs;
   const [nameClicked, setNameClicked] = useState("");
-  console.log(nameClicked);
 
   const employerLogin = useSelector((state) => state.employerLoginReducer);
   const { employerInfo } = employerLogin;

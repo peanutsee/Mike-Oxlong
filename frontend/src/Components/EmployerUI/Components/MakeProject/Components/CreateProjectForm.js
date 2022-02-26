@@ -15,7 +15,7 @@ function CreateProjectForm() {
   const {success, project} = projectReducer
 
   useEffect(() => {
-    if (!employerInfo) {
+    if (employerInfo.length === 0) {
       navigate('/');
     }
   }, [navigate, employerInfo]);
