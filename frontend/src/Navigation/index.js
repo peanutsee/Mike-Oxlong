@@ -32,6 +32,10 @@ const InternRegistration = lazy(() =>
   import("../Components/InternUI/Components/AuthRegister")
 );
 
+const InternLogin = lazy(() =>
+  import("../Components/InternUI/Components/AuthLogin")
+);
+
 export const NAVIGATION_ROUTES = Object.freeze({
   // Everyone Can Access Routes
   home: {
@@ -80,5 +84,10 @@ export const NAVIGATION_ROUTES = Object.freeze({
   internRegistration: {
     path: "/intern-register",
     element: <InternRegistration />,
+  },
+
+  internLogin: {
+    path: "/intern-login",
+    element: <InternLogin />,
   },
 });

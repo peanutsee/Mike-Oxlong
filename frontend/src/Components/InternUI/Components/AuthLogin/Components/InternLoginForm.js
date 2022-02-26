@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { handleEmployerLogin } from "../Redux/Actions/actions";
+import { handleInternLogin } from "../Redux/Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-function EmployerLoginForm() {
+function InternLoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const employerLogin = useSelector((state) => state.employerLoginReducer);
+  const internLogin = useSelector((state) => state.internLoginReducer);
 
   if (true) {
-    console.log(employerLogin);
+    console.log(internLogin);
   }
-  const { employerInfo } = employerLogin;
+  const { internInfo } = internLogin;
 
   // Form States
   const [email, setEmail] = useState("");
@@ -25,14 +25,15 @@ function EmployerLoginForm() {
       username: email,
       password: password,
     };
-    dispatch(handleEmployerLogin(data));
+    dispatch(handleInternLogin(data));
   };
 
   useEffect(() => {
-    if (employerInfo.length !== 0) {
-      navigate("/employer-dash");
+    if (internInfo.length !== 0) {
+      console.log("dash");
+      //navigate("/intern-dash");
     }
-  }, [navigate, employerInfo]);
+  }, [navigate, internInfo]);
 
   return (
     <Container className="py-5 my-5">
@@ -70,4 +71,4 @@ function EmployerLoginForm() {
   );
 }
 
-export default EmployerLoginForm;
+export default InternLoginForm;

@@ -68,7 +68,7 @@ function InternRegistrationForm() {
       <Container className="text-center fw-bold fs-3 my-5">
         Tell us about you
       </Container>
-      <Form>
+      <Form className="p-5 shadow shadow-100">
         <Container>
           <div className="mb-3 fw-bold">Personal Details</div>
           <Row className="mb-3">
