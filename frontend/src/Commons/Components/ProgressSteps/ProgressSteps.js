@@ -16,9 +16,8 @@ function ProgressSteps(prop) {
     : (curr) => {
         setLeftStep(curr);
       };
-  console.log(steps);
   return (
-    <Col xs={10}>
+    <Col xs={20}>
       <div className="ProgressSteps__paddings">
         <h2 className="ProgressSteps__heading">
           {number}. {name}

@@ -43,7 +43,7 @@ function AppHeader() {
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
           >
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton className="bg-primary">
               <Offcanvas.Title id="offcanvasNavbarLabel">
                 Easy Intern Inc.
               </Offcanvas.Title>

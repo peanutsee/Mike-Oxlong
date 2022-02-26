@@ -68,11 +68,8 @@ function InternDashboard() {
     <Container>
       <Tabs defaultActiveKey="1" centered>
         <TabPane tab="Internship Applications" key="1">
-          <Row>
-            <Col>
-              <LeftList name={(app_name) => setNameClicked(app_name)} />
-            </Col>
-            <Col xs={10}>
+          <Row className="d-flex justify-content-center">
+            <Col xs={10} className="justify-content-center">
               {test.map((data, index) => (
                 <ProgressSteps
                   key={index}
