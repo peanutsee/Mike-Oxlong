@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 
 function Gateway() {
   return (
-    <Row className='p-5'>
+    <Row className="p-5">
       <Col sm={6}>
         <Link to="/intern-portal">
           <div className="p-5 mb-3 border border-primary rounded text-center shadow shadow-100">
