@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { handleEmployerLogin } from '../Redux/Actions/actions'
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom'
 
 function EmployerLoginForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const employerLogin = useSelector((state) => state.employerLoginReducer);
+  const { employerInfo } = employerLogin;
 
   // Form States
   const [email, setEmail] = useState("");
@@ -17,6 +22,12 @@ function EmployerLoginForm() {
     };
     dispatch(handleEmployerLogin(data));
   };
+
+  useEffect(() => {
+    if (employerInfo) {
+      navigate('/employer-ui');
+    }
+  }, [navigate, employerInfo]);
   
   return (
     <Container className="py-5 my-5">
@@ -46,7 +57,7 @@ function EmployerLoginForm() {
         </Form.Group>
         <div className="d-flex justify-content-end">
           <Button type="submit" className="btn btn-primary">
-            Register
+            Login
           </Button>
         </div>
       </Form>

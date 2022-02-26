@@ -5,7 +5,7 @@ import {
   EMPLOYER_REGISTER_RESET,
 } from "../Constants/constants";
 
-const employerRegisterInitialState = { data: [] };
+const employerRegisterInitialState = { employerInfo: [] };
 
 export const employerRegistrationReducer = (
   state = employerRegisterInitialState,
@@ -20,7 +20,7 @@ export const employerRegistrationReducer = (
         ...employerRegisterInitialState,
         loading: false,
         success: true,
-        data: payload,
+        employerInfo: payload,
       };
     case EMPLOYER_REGISTER_ERROR:
       return {
