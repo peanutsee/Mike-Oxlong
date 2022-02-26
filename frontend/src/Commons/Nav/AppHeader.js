@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { employerLogout } from "../../Components/EmployerUI/Components/AuthLogin/Redux/Actions/actions";
 import { internLogout } from "../../Components/InternUI/Components/AuthLogin/Redux/Actions/actions";
 
-
 function AppHeader() {
   const dispatch = useDispatch();
   const employerLogin = useSelector((state) => state.employerLoginReducer);
@@ -71,7 +70,10 @@ function AppHeader() {
                         </Link>
                       </ListGroup.Item>
                     </ListGroup>
-                    <Button className="mt-5" onClick={handleEmployerLogout}>
+                    <Button
+                      className="btn btn-secondary my-5"
+                      onClick={handleEmployerLogout}
+                    >
                       Logout
                     </Button>
                   </>

@@ -17,9 +17,19 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         serializer = UserSerializerWithToken(self.user).data
+
+        # Get Intern Data
+        user = User.objects.filter(id=serializer['id'])[0]
+        try:
+            intern_profile = InternProfile.objects.filter(user=user)[0]
+            intern_profile_serialized = InternProfileSerializer(intern_profile, many=False)
+            intern_profile_data = intern_profile_serialized.data
+        except:
+            print("Not Intern")
+
         for k, v in serializer.items():
             data[k] = v
-
+        data.update(intern_profile_data)
         return data
 
 
