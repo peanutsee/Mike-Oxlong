@@ -1,56 +1,105 @@
 import { React, useState } from "react";
-import { Steps, Tabs } from "antd";
+import { Steps, Tabs, Popover, Button, Modal } from "antd";
 
 import { Row, Col, ListGroup } from "react-bootstrap";
 import "./style.css";
 
+import test from "./test.json";
+import test2 from "./test2.json";
+
 function ProgressSteps() {
   const [step, setStep] = useState(0);
-  const { TabPane } = Tabs;
-  const onChange = (current) => {
-    setStep({ current });
-  };
+
   const { Step } = Steps;
   const [leftStep, setLeftStep] = useState(0);
   const onClickLeft = (curr) => {
     setLeftStep(curr);
   };
 
-  return (
-    <Row>
-      <Col>
-        <div className="ProgressSteps__leftColumn">
-          <ListGroup defaultActiveKey="#link1">
-            <ListGroup.Item action href="#link1">
-              Applicant 1
-            </ListGroup.Item>
-            <ListGroup.Item action href="#link2" disabled>
-              Applicunt 2
-            </ListGroup.Item>
-            <ListGroup.Item action>
-              This one is a button for a random alert
-            </ListGroup.Item>
-          </ListGroup>
-        </div>
-      </Col>
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-      <Col xs={8}>
-        <div className="ProgressSteps__paddings">
-          <h2 className="ProgressSteps__heading"> APPLICANT 1 </h2>
-          <Steps
-            progressDot
-            current={leftStep}
-            onChange={onClickLeft}
-            direction="horizontal"
-          >
-            <Step title="step1" description="hello1" subtitle="hello2 " />
-            <Step title="step2" description="hello1" subtitle="hello2 " />
-            <Step title="hello" description="hello1" subtitle="hello2 " />
-            <Step title="hello" description="hello1" subtitle="hello2 " />
-          </Steps>
-        </div>
-      </Col>
-    </Row>
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const content = (
+    <div>
+      <p>Name : jerry</p>
+      <p>job applied : SOFTWARE DEV INTERN</p>
+      <p>Stage : 1</p>
+      <Button onClick={showModal}>applicant resume</Button>
+      <Modal
+        title="Basic Modal"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </div>
+  );
+
+  return (
+    <>
+      <Row>
+        <Col>
+          {test2.map((data) => (
+            <>
+              <div className="ProgressSteps__leftColumn">
+                <ListGroup>
+                  <Popover content={content} title="Applicant name">
+                    <ListGroup.Item className="ProgressSteps__leftItem">
+                      {data.name}
+                    </ListGroup.Item>
+                  </Popover>
+                </ListGroup>
+              </div>
+            </>
+          ))}
+        </Col>
+        <Col xs={10}>
+          {test.map((step, key) => (
+            <>
+              <div className="ProgressSteps__paddings">
+                <h2 className="ProgressSteps__heading"> applicant 1 </h2>
+                <Steps
+                  progressDot
+                  current={leftStep}
+                  onChange={onClickLeft}
+                  direction="horizontal"
+                >
+                  <Step
+                    title={step.title}
+                    description={step.desc}
+                    subtitle={step.subtitle}
+                  />
+                  <Step
+                    title={step.title2}
+                    description={step.desc2}
+                    subtitle={step.subtitle2}
+                  />
+                  <Step
+                    title={step.title3}
+                    description={step.desc3}
+                    subtitle={step.subtitle3}
+                  />
+                </Steps>
+              </div>
+            </>
+          ))}
+        </Col>
+      </Row>
+    </>
   );
 }
 

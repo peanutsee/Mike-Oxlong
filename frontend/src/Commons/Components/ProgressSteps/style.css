@@ -1,5 +1,5 @@
 .ProgressSteps__paddings {
-    margin-top: 0px;
+    margin-top: 50px;
 }
 
 .ProgressSteps__leftColumn {
@@ -14,4 +14,8 @@
 
 .ProgressSteps__Table {
     margin-top: 50px;
+}
+
+.ProgressSteps__leftItem:hover {
+    background-color: rgb(51, 156, 255);
 }
