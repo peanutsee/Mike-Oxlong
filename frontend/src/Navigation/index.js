@@ -105,7 +105,7 @@ export const NAVIGATION_ROUTES = Object.freeze({
   },
 
   internDashboard: {
-    path: "/intern-dashboard",
+    path: "/intern-dash",
     element: <InternDashboard />,
   },
 

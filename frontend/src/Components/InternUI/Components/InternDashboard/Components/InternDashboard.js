@@ -6,29 +6,29 @@ import { useSelector } from "react-redux";
 
 import ProgressSteps from "../../../../../Commons/Components/ProgressSteps/ProgressSteps";
 import EditableTable from "../../../../../Commons/Components/EditableTable/EditableTable";
-import LeftList from "../LeftList../../../../Commons/Components/ProgressSteps/LeftList";
+import LeftList from "../../../../../Commons/Components/ProgressSteps/LeftList";
 
 import test from "./Data/test.json";
 
-function EmployerDashboard() {
+function InternDashboard() {
   const navigate = useNavigate();
   const { TabPane } = Tabs;
   const [nameClicked, setNameClicked] = useState("");
   console.log(nameClicked);
 
-  const employerLogin = useSelector((state) => state.employerLoginReducer);
-  const { employerInfo } = employerLogin;
+  const internLogin = useSelector((state) => state.internLoginReducer);
+  const { internInfo } = internLogin;
 
   useEffect(() => {
-    if (employerInfo.length === 0) {
-      navigate("/employer-portal");
+    if (internInfo.length === 0) {
+      navigate("/intern-portal");
     }
-  }, [navigate, employerInfo]);
+  }, [navigate, internInfo]);
 
   return (
     <Container>
       <Tabs defaultActiveKey="1" centered>
-        <TabPane tab="Intern Applicants" key="1">
+        <TabPane tab="Internship Applicantions" key="1">
           <Row>
             <Col>
               <LeftList name={(app_name) => setNameClicked(app_name)} />
@@ -55,4 +55,4 @@ function EmployerDashboard() {
   );
 }
 
-export default EmployerDashboard;
+export default InternDashboard;
