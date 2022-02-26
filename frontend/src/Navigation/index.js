@@ -1,6 +1,7 @@
 import { lazy } from "react";
 
 const LandingPage = lazy(() => import("../Components/LandingPage"));
+const InternRegistration = lazy(() => import("../Components/InternUI"));
 
 export const NAVIGATION_ROUTES = Object.freeze({
   // Everyone Can Access Routes
@@ -13,5 +14,8 @@ export const NAVIGATION_ROUTES = Object.freeze({
   // Employer-Only Routes
 
   // Interns-Only Routes
+  internRegistration: {
+    path: "/intern/register",
+    element: <InternRegistration />,
+  },
 });
-
