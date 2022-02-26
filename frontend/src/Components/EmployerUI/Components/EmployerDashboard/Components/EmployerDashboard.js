@@ -24,7 +24,6 @@ function EmployerDashboard() {
       navigate("/employer-dash");
     }
     dispatch(getEmployerData());
-    console.log(employerData);
   }, [navigate, employerInfo, dispatch]);
 
   return (

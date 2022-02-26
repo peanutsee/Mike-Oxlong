@@ -4,7 +4,7 @@ import InternDashboard from "./Components/InternDashboard";
 function index() {
   return (
     <div>
-      <InternDashboard></InternDashboard>
+      <InternDashboard/>
     </div>
   );
 }

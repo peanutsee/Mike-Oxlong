@@ -11,6 +11,7 @@ import * as internLoginReducer from "../../Components/InternUI/Components/AuthLo
 import * as retreiveInternshipReducer from "../../Components/InternUI/Components/Internships/Redux/Reducers/reducers";
 import * as retreiveProjectsReducer from "../../Components/InternUI/Components/Projects/Redux/Reducers/reducers";
 import * as retreiveCoursesReducer from "../../Components/InternUI/Components/Courses/Redux/Reducers/reducers";
+import * as retrieveDashboardReducer from '../../Components/InternUI/Components/InternDashboard/Redux/Reducers/reducers'
 
 export const reducer = combineReducers({
   ...employerRegistrationReducer,
@@ -23,4 +24,5 @@ export const reducer = combineReducers({
   ...retreiveProjectsReducer,
   ...retreiveCoursesReducer,
   ...employerDataReducer,
+  ...retrieveDashboardReducer,
 });
