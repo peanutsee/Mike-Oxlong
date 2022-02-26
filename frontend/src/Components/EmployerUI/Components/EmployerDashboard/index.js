@@ -38,6 +38,7 @@ function EmployerDashboard() {
                   name={data.Applicant_Name}
                   job={data.job_applied}
                   steps={data.steps}
+                  intern={false}
                 />
               ))}
             </Col>

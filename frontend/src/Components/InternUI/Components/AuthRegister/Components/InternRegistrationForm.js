@@ -16,7 +16,7 @@ function InternRegistrationForm() {
   const { internInfo } = internLogin;
   useEffect(() => {
     if (internInfo.length !== 0) {
-      navigate("/intern-dashboard");
+      navigate("/intern-dash");
     }
   }, [navigate, internInfo]);
 
