@@ -3,7 +3,6 @@ import {
   RETRIEVE_INTERNSHIPS_SUCCESS,
   RETRIEVE_INTERNSHIPS_ERROR,
   RETRIEVE_INTERNSHIPS_RESET,
-
   APPLY_INTERNSHIPS_REQUEST,
   APPLY_INTERNSHIPS_SUCCESS,
   APPLY_INTERNSHIPS_ERROR,
@@ -12,7 +11,10 @@ import {
 
 const internshipInitialState = { internships: [] };
 
-export const retrieveInternshipsReducer = (state = internshipInitialState, action) => {
+export const retrieveInternshipsReducer = (
+  state = internshipInitialState,
+  action
+) => {
   const { type, payload } = action;
   switch (type) {
     case RETRIEVE_INTERNSHIPS_REQUEST:
@@ -38,7 +40,10 @@ export const retrieveInternshipsReducer = (state = internshipInitialState, actio
   }
 };
 
-export const applyInternshipsReducer = (state = internshipInitialState, action) => {
+export const applyInternshipsReducer = (
+  state = internshipInitialState,
+  action
+) => {
   const { type, payload } = action;
   switch (type) {
     case APPLY_INTERNSHIPS_REQUEST:

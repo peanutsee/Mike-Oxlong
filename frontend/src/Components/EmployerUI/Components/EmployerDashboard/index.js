@@ -31,7 +31,7 @@ function EmployerDashboard() {
               <LeftList name={(app_name) => setNameClicked(app_name)} />
             </Col>
             <Col xs={10}>
-              {test.map((data, index) => (
+              {/* {test.map((data, index) => (
                 <ProgressSteps
                   key={index}
                   number={data.no}
@@ -40,7 +40,7 @@ function EmployerDashboard() {
                   steps={data.steps}
                   intern={false}
                 />
-              ))}
+              ))} */}
             </Col>
           </Row>
         </TabPane>

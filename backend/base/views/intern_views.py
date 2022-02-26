@@ -18,6 +18,7 @@ def getDashboard(request):
     internships = Internship.objects.filter(enrolled_intern=request.user)
     internships_serialized = InternshipSerializer(internships, many=True)
     internships_data = internships_serialized.data
+    print(internships_data)
     for internship in internships_data:
         result['internships'].append(internship)
 
@@ -27,6 +28,9 @@ def getDashboard(request):
     projects_data = projects_serialized.data
     for project in projects_data:
         result['projects'].append(project)
+
+    print("retrieving dashboard")
+    print(result)
 
     return Response(result, status=status.HTTP_200_OK)
 
@@ -53,6 +57,7 @@ def retrieveProjects(request):
 # Enroll To Internship
 @api_view(['PUT'])
 def enrollInternship(request, pk):
+    print("Enrolling internship")
     internship = Internship.objects.filter(id=pk)[0]
     internship.enrolled_intern.add(request.user.id)
     return Response("Enrolled", status=status.HTTP_200_OK)

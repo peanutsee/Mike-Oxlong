@@ -2,67 +2,89 @@ import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
 import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getDashboard } from "../Redux/Actions/actions";
 
 import ProgressSteps from "../../../../../Commons/Components/ProgressSteps/ProgressSteps";
 import EditableTableIntern from "../../../../../Commons/Components/EditableTable/EditableTableIntern";
-import LeftList from "../../../../../Commons/Components/ProgressSteps/LeftList";
 
 import test from "./Data/test.json";
 
 function InternDashboard() {
-  const navigate = useNavigate();
-  const { TabPane } = Tabs;
-  const [nameClicked, setNameClicked] = useState("");
-  console.log(nameClicked);
+  const dashboard = useSelector((state) => state.retrieveDashboardReducer);
 
   const internLogin = useSelector((state) => state.internLoginReducer);
+
   const { internInfo } = internLogin;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { TabPane } = Tabs;
+  const [nameClicked, setNameClicked] = useState("");
 
   useEffect(() => {
     if (internInfo.length === 0) {
       navigate("/intern-portal");
     }
-  }, [navigate, internInfo]);
+    dispatch(getDashboard());
+  }, [navigate, internInfo, dispatch]);
 
-  const jobApplications = [
-    {
-      "Job Title": "CEO",
-      "Job Description": "Long text here pls",
-      Status: "Star",
-    },
-    {
-      "Job Title": "BEO",
-      "Job Description": "Longer text here pls",
-      Status: "Star",
-    },
-    {
-      "Job Title": "DEO",
-      "Job Description": "TEXT MEHASDHHADSU",
-      Status: "Star",
-    },
-  ];
+  const { loading, dashboardData } = dashboard;
 
-  const projectApplications = [
-    {
-      "Project Title": "Build Social Networking Site",
-      "Job Description": "Long text here pls",
-      Company: "Facebook",
-      Status: "Star",
-    },
-    {
-      "Project Title": "Build iNTUition v8.0 Hackathon Project",
-      "Job Description": "Long text here pls",
-      Company: "IEEE",
-      Status: "Star",
-    },
-    {
-      "Project Title": "Make Money",
-      "Job Description": "Long text here pls",
-      Company: "Money.Com",
-      Status: "Star",
-    },
-  ];
+  console.log("Dashboard");
+  console.log(dashboard);
+
+  if (loading === true) {
+    console.log("loading is " + loading);
+    const { internships, projects } = dashboardData;
+
+    //const internshipApplications = internships.reduce((acc, cur) => ({ ...acc, ["Internship Title"]: cur.internship_title, ["Internship Description"]: cur.internship_description }), {})
+
+    // const internshipApplications = internships.map((internship) => {
+    //   console.log(internship);
+    //   //(({"internship_title", "internship_description", "intership_compensation"}) => ({}))(internship);
+    // });
+
+    // const internshipApplications = [
+    //   {
+    //     "Job Title": "CEO",
+    //     "Job Description": "Long text here pls",
+    //     Status: "Star",
+    //   },
+    //   {
+    //     "Job Title": "BEO",
+    //     "Job Description": "Longer text here pls",
+    //     Status: "Star",
+    //   },
+    //   {
+    //     "Job Title": "DEO",
+    //     "Job Description": "TEXT MEHASDHHADSU",
+    //     Status: "Star",
+    //   },
+    // ];
+
+    const projectApplications = [
+      {
+        "Project Title": "Build Social Networking Site",
+        "Job Description": "Long text here pls",
+        Company: "Facebook",
+        Status: "Star",
+      },
+      {
+        "Project Title": "Build iNTUition v8.0 Hackathon Project",
+        "Job Description": "Long text here pls",
+        Company: "IEEE",
+        Status: "Star",
+      },
+      {
+        "Project Title": "Make Money",
+        "Job Description": "Long text here pls",
+        Company: "Money.Com",
+        Status: "Star",
+      },
+    ];
+  }
 
   return (
     <Container>
@@ -84,7 +106,7 @@ function InternDashboard() {
           </Row>
         </TabPane>
         <TabPane tab="Manage Project Applications" key="2">
-          <EditableTableIntern tableEntries={projectApplications} />
+          {/* <EditableTableIntern tableEntries={projectApplications} /> */}
         </TabPane>
       </Tabs>
     </Container>
