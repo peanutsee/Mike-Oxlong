@@ -21,8 +21,7 @@ function RecommendedCourses() {
         {internInfo &&
           internInfo.interests
             .substring(2, internInfo.interests.length - 2)
-            .split("', '")
-            .map((skill) => <li>{skill}</li>)}
+            .replaceAll("', '", ", ")}
       </p>
       <h5>Try these courses!</h5>
       <Row>

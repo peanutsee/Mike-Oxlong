@@ -5,7 +5,7 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import { Link } from "react-router-dom";
 const steps = ["View Resume", "Schedule Meeting", "Outcome"];
 
 export default function StepsIntern(props) {
@@ -30,7 +30,7 @@ export default function StepsIntern(props) {
     <>
       {internships.map((internship) =>
         internship.enrolled_intern.map((intern) => (
-          <>
+          <div className='mb-5'>
             <h4>
               {internship.internship_title} Position
             </h4>
@@ -59,20 +59,7 @@ export default function StepsIntern(props) {
                     <Typography sx={{ mt: 2, mb: 1 }}>
                       {activeStep + 1 === 1 ? (
                         <>
-                          <p>First Name: {intern.first_name}</p>
-                          <p>Last Name: {intern.last_name}</p>
-                          <p>Interests: {intern.interests}</p>
-                          <p>Education: {intern.education}</p>
-                          <p>Skills: {intern.skills}</p>
-                          <p>
-                            Email:{" "}
-                            <a href={`mailto:${intern.email}`}>
-                              {intern.email}
-                            </a>
-                          </p>
-                          <p>
-                            Resume: <a>Click to Download</a>
-                          </p>
+                        <p>You application is current under review! Meanwhile, take up some <Link to='/upskill'>courses</Link> to upskill yourself. </p>
                         </>
                       ) : activeStep + 1 === 2 ? (
                         <>
@@ -101,7 +88,7 @@ export default function StepsIntern(props) {
                 )}
               </div>
             </Box>
-          </>
+          </div>
         ))
       )}
     </>

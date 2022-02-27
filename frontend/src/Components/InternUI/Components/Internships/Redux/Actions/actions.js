@@ -57,7 +57,6 @@ export const applyInternships =
       );
 
       dispatch({ type: APPLY_INTERNSHIPS_SUCCESS, payload: data });
-      dispatch({ type: APPLY_INTERNSHIPS_RESET });
     } catch (error) {
       dispatch({
         type: APPLY_INTERNSHIPS_ERROR,
