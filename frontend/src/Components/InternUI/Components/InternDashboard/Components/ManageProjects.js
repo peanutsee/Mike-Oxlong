@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function ManageProjects(props) {
   const { projects } = props;
@@ -36,7 +37,7 @@ function ManageProjects(props) {
       </>
     );
   } else {
-    return <h3 className="text-center">No Projects to Show :(</h3>;
+    return <h3 className="text-center">No Projects to Show :( <Link to='/projects'>Apply now</Link>!</h3>;
   }
 }
 

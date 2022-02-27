@@ -96,10 +96,16 @@ function ApplicantsComponent(props) {
                     <p>
                       Interests:{" "}
                       {intern.interests
-                        .substring(2, intern.interests.length - 2).replaceAll("', '", ", ")}
+                        .substring(2, intern.interests.length - 2)
+                        .replaceAll("', '", ", ")}
                     </p>
                     <p>Education: {intern.education}</p>
-                    <p>Skills: {intern.skills.substring(2, intern.skills.length - 2).replaceAll("', '", ", ")}</p>
+                    <p>
+                      Skills:{" "}
+                      {intern.skills
+                        .substring(2, intern.skills.length - 2)
+                        .replaceAll("', '", ", ")}
+                    </p>
                     <p>
                       Email:{" "}
                       <a href={`mailto:${intern.email}`}>{intern.email}</a>

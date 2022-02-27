@@ -27,7 +27,7 @@ function RecommendedCourses() {
       <Row>
         {courses &&
           courses.map((course) => (
-            <Col sm={3}>
+            <Col sm={3} className='mb-3'>
               <Card className="h-100">
                 <Card.Title className="py-2 text-center">
                   {course.course_name}

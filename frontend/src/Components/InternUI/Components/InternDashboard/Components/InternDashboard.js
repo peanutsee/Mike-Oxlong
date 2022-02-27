@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getDashboard } from "../Redux/Actions/actions";
 import { Form, Button, Container, Row, Col, Tabs, Tab } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Card } from "@mui/material";
 
 function InternDashboard() {
   const dispatch = useDispatch();
@@ -19,8 +21,8 @@ function InternDashboard() {
   const { dashboardData: internData } = internDataReducer;
 
   useEffect(() => {
-    if (internInfo.length !== 0) {
-      navigate("/intern-dash");
+    if (internInfo.length === 0) {
+      navigate("/intern-portal");
     }
     dispatch(getDashboard());
   }, [navigate, internInfo, dispatch]);
@@ -31,14 +33,13 @@ function InternDashboard() {
         className="my-5 d-flex justify-content-center"
       >
         <Tab eventKey="internships" title="Internships">
-          {internData && (
-            <ManageInternships internData={internData} />
-          )}
+          {internData && <ManageInternships internData={internData} />}
         </Tab>
         <Tab eventKey="project" title="Projects">
           {internData && <ManageProjects projects={internData.projects} />}
         </Tab>
       </Tabs>
+      
     </Container>
   );
 }

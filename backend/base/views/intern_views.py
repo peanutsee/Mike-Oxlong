@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from ..serializers import *
+from random import choices
 
 # Retrieve Dashboard
 @api_view(['GET'])
@@ -61,7 +62,7 @@ def retrieveCourses(request):
     courses = Course.objects.all()
     courses_serialized = CourseSerializer(courses, many=True)
     courses_data = courses_serialized.data
-
+    courses_data = choices(courses_data, k=4)
     return Response(courses_data, status=status.HTTP_200_OK)
 
 

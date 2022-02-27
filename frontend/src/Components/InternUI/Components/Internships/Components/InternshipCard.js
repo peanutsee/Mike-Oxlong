@@ -20,7 +20,7 @@ function InternshipCard(props) {
     return (
       <>
         {success && (
-          <Alert variant="succeess">
+          <Alert variant="success">
             Internship Successfully Apply! View in{" "}
             <Link to="/intern-dash">Dashboard</Link>.
           </Alert>

@@ -7,12 +7,6 @@ function AppFooter() {
       <a href="https://github.com/peanutsee/Mike-Oxlong">
         <i class="fa-brands fa-github fa-3x"></i>
       </a>
-      <a href='#' className='m-3'>
-        <i class="fa-brands fa-youtube fa-3x"></i>
-      </a>
-      <a href='#'>
-        <i class="fa-brands fa-dev fa-3x"></i>
-      </a>
     </footer>
   );
 }
